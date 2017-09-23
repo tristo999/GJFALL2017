@@ -27,7 +27,6 @@ public class PlayerHudController : MonoBehaviour {
 
         foreach(Transform t in transform)
         {
-            Debug.Log("Found: "+t.name);
             
            if (t.name.Equals("shout1"))
                     shouts[0] = t.GetComponent<Image>();
