@@ -78,7 +78,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AttackManager.cs" />
+    <Compile Include="Assets\HudController.cs" />
     <Compile Include="Assets\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\PlayerHudController.cs" />
+    <Compile Include="Assets\ShoutController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
