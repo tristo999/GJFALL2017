@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class AttackManager : MonoBehaviour {
 
-    public float damageMultiplier = 1.0f;
+    public float baseKnockback = 1.0f;
     public Collider atkcl;
     public string attackAxis = "ATK";
     public float forceUp;
     public float cooldown = 0f;
-    public float initCooldown = 2f;
+    private float initCooldown;
     public float getAtk;
     public bool attacked = false;
-    
-	// Use this for initialization
-	void Start () {
+    private float damageMultiplier = 1.0f;
+
+
+    // Use this for initialization
+    void Start () {
         atkcl = GetComponentInChildren<Collider>();
+        initCooldown = cooldown;
 	}
     void OnTriggerEnter(Collider atkcl)
     {
             if (atkcl.tag == "Player")
         {
             Vector3 direction = transform.forward.normalized;
-            atkcl.attachedRigidbody.AddForce(direction.x * damageMultiplier, forceUp, direction.z * damageMultiplier);
+            atkcl.attachedRigidbody.AddForce(direction.x * baseKnockback*damageMultiplier, forceUp, direction.z * baseKnockback*damageMultiplier);
             attacked = true;
         }
     }

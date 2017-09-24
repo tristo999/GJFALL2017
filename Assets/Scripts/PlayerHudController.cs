@@ -13,7 +13,6 @@ public class PlayerHudController : MonoBehaviour {
 
     //HUD Objects
     Image[] shouts;
-    Image damageMultiplierLabel;
     Text damageMultiplier;
     
     //controllers
@@ -26,9 +25,7 @@ public class PlayerHudController : MonoBehaviour {
         shouts = new Image[numShouts];
 
         foreach(Transform t in transform)
-        {
-            Debug.Log("Found: "+t.name);
-            
+        {            
            if (t.name.Equals("shout1"))
                     shouts[0] = t.GetComponent<Image>();
 
@@ -41,8 +38,6 @@ public class PlayerHudController : MonoBehaviour {
             if (t.name.Equals("damageMultiplier"))
                     damageMultiplier = t.GetComponent<Text>();
                     
-            if (t.name.Equals("damageMultiplierLabel"))
-                    damageMultiplierLabel = t.GetComponent<Image>();
         }
 
         //todo: read from attackManager
@@ -63,19 +58,26 @@ public class PlayerHudController : MonoBehaviour {
             Debug.LogError("Error: no attack manager attached to target player.");
         }
 
+        
+
     }
 	
 	// Update is called once per frame
 	void Update () {
         updateShoutText();
         updateDamageBonus();
+
+        if (!player.activeInHierarchy)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void updateDamageBonus()
     {
         if (attackManager != null)
         {
-            damageMultiplier.text = attackManager.getDamageMultiplier() + "";
+            damageMultiplier.text = "Damage x "+attackManager.getDamageMultiplier();
         }
     }
 
