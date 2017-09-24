@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour {
     public string jumpAxis;
     public bool onGround;
 
+    public AudioClip jumpClip;
+    public AudioClip hitGroundClip;
+
     public GameObject deadPlayerPrefab;
 
     public GameController gameController;
@@ -22,12 +25,18 @@ public class PlayerMovement : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody>();
     }
-    private void OnTriggerEnter(Collider groundCollider)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (groundCollider.tag == "Ground")
+        if (collision.collider.tag == "Ground")
         {
+            GetComponent<AudioSource>().PlayOneShot(hitGroundClip);
             onGround = true;
         }
+    }
+
+    private void OnTriggerEnter(Collider groundCollider)
+    {
         if (groundCollider.tag == "killBox")
         {
             GameObject deadRobot = Instantiate(deadPlayerPrefab, transform.position, transform.rotation);
@@ -54,9 +63,11 @@ public class PlayerMovement : MonoBehaviour {
         transform.rotation = Quaternion.Euler(0, yRot, 0);
         }
 
-        if (onGround)
+        if (onGround&&jump>0)
         {
-            rb.AddForce(new Vector3(0, jump, 0) * jumpForce * Time.deltaTime);
+            rb.AddForce(new Vector3(0, jump, 0) * jumpForce);
+            GetComponentInChildren<AudioSource>().PlayOneShot(jumpClip);
+            onGround = false;
         }
     }
 }
