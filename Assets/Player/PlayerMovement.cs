@@ -36,13 +36,16 @@ public class PlayerMovement : MonoBehaviour {
         float vSpeed = Input.GetAxis(vAxis);
         float jump = Input.GetAxis(jumpAxis);
         Vector3 dis = new Vector3(hSpeed, 0, vSpeed);
-        rb.AddForce(dis * speed);
-        if ((Mathf.Atan2(dis.x, dis.z) / 3.14f * 180) != 0) { 
-        transform.rotation = Quaternion.Euler(0, (Mathf.Atan2(dis.x, dis.z) / 3.14f * 180), 0);
-    }
+        rb.AddForce(dis.normalized * speed*Time.deltaTime);
+        float yRot = (Mathf.Atan2(dis.x, dis.z) / 3.14f * 180);
+        if (Mathf.Abs(hSpeed)>.1||Mathf.Abs(vSpeed)>.1) { 
+        transform.rotation = Quaternion.Euler(0, yRot, 0);
+        }
+
         if (onGround)
         {
-            rb.AddForce(new Vector3(0, jump, 0) * jumpForce);
+            onGround = false;
+            rb.AddForce(new Vector3(0, jump, 0) * jumpForce * Time.deltaTime);
         }
     }
 }

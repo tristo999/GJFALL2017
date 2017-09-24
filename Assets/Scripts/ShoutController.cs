@@ -8,6 +8,7 @@ public class ShoutController : MonoBehaviour {
     public int numShoutsLeft = 3;
     public float shoutMultiplier = 1.0f;
     public Collider atkcl;
+    private MeshRenderer shoutCone;
     public string attackAxis = "ATK";
     public float forceUp;
     public float cooldown = 2f;
@@ -24,13 +25,14 @@ public class ShoutController : MonoBehaviour {
         maxNumShots = numShoutsLeft;
         timeSinceLastShout = 0.0f;
         initCooldown = cooldown;
+        shoutCone = GetComponent<MeshRenderer>();
     }
     void OnTriggerEnter(Collider atkcl)
     {
-        if (atkcl.tag == "Player" &&  numShoutsLeft > 0)
+        if (atkcl.tag == "Player")
         {
-            Vector3 direction = transform.forward.normalized;
-            atkcl.attachedRigidbody.AddForce(direction.z * shoutMultiplier, forceUp, direction.x * shoutMultiplier);
+            Vector3 direction = -transform.forward.normalized;
+            atkcl.attachedRigidbody.AddForce(direction.x * shoutMultiplier, forceUp, direction.z * shoutMultiplier);
             attacked = true;
             
         }
@@ -47,18 +49,21 @@ public class ShoutController : MonoBehaviour {
             }
         }
 
-
-        cooldown -= Time.fixedDeltaTime;
+        cooldown -= Time.deltaTime;
         getAtk = Input.GetAxis(attackAxis);
-        if (getAtk > 0 && cooldown < 0f)
+        if (getAtk > 0 && cooldown < 0f &&numShoutsLeft>0)
         {
             atkcl.enabled = true;
+            //shoutCone.enabled = true;
+            shoutCone.GetComponentInChildren<ParticleSystem>().Emit(100);
             cooldown = initCooldown;
             numShoutsLeft--;
         }
+
         if ((atkcl.enabled && cooldown < 0f) || attacked)
         {
             atkcl.enabled = false;
+            //shoutCone.enabled = false;
             attacked = false;
         }
     }
