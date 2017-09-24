@@ -38,14 +38,47 @@ public class GameController : MonoBehaviour {
                 }
             }
             AppConstants.currentRound++;
+
             if (AppConstants.currentRound < AppConstants.numRounds)
             {
                 SceneManager.LoadScene(1);
             }
             else
             {
-                UI.SetActive(false);
-                EndScreen.SetActive(true);
+                int highestScore = 0;
+
+                List<int> winners = new List<int>();
+
+                for(int i = 0; i < AppConstants.score.Length; i++)
+                {
+                    if (AppConstants.score[i]>highestScore)
+                    {
+                        highestScore = AppConstants.score[i];
+                    }
+                }
+
+                for (int i = 0; i < AppConstants.score.Length; i++)
+                {
+                    if (AppConstants.score[i] == highestScore)
+                    {
+                        winners.Add(i);
+                    }
+                }
+
+                if (winners.Count<=1)
+                {
+                    UI.SetActive(false);
+                    EndScreen.SetActive(true);
+                }else
+                {
+                    AppConstants.playerInMatch = new bool[]{ false, false, false, false };
+                    for(int i = 0; i < winners.Count; i++)
+                    {
+                        AppConstants.playerInMatch[winners[i]] = true;
+                    }
+                    SceneManager.LoadScene(1);
+                }
+                
             }
         }
 	}

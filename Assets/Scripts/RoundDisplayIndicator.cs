@@ -8,8 +8,14 @@ public class RoundDisplayIndicator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        roundIndicator.text = "Round " + (AppConstants.currentRound+1) + "/" + AppConstants.numRounds;
-	}
+        if (AppConstants.currentRound >= AppConstants.numRounds)
+        {
+            roundIndicator.text = "Tie breaker";
+        }else
+        {
+            roundIndicator.text = "Round " + (AppConstants.currentRound + 1) + "/" + AppConstants.numRounds;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
