@@ -9,6 +9,7 @@ public class AdjustZoom : MonoBehaviour {
     public float boomRatio;
     public float boomLength;
     private Vector3 offsetDir;
+    public float maxZoomSpeed;
  
 
 	// Use this for initialization
@@ -29,6 +30,17 @@ public class AdjustZoom : MonoBehaviour {
 
     void LateUpdate()
     {
-        transform.position = offsetDir * boomLength + GameObject.Find("Player Center").transform.position;
+        Vector3 newPos = offsetDir * boomLength + GameObject.Find("Player Center").transform.position;
+        Vector3 diff = newPos - transform.position;
+
+        if (diff.magnitude > maxZoomSpeed * Time.deltaTime)
+        {
+            transform.position += diff.normalized * maxZoomSpeed        * Time.deltaTime;
+
+        }
+        else
+        {
+            transform.position = newPos;
+        }
     }
 }

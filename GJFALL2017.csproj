@@ -78,12 +78,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AdjustZoom.cs" />
     <Compile Include="Assets\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\PlayerPosition.cs" />
+    <Compile Include="Assets\Scripts\AdjustZoom.cs" />
+    <Compile Include="Assets\Scripts\AppConstants.cs" />
     <Compile Include="Assets\Scripts\AttackManager.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\HudController.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScript.cs" />
     <Compile Include="Assets\Scripts\PlayerHudController.cs" />
+    <Compile Include="Assets\Scripts\PlayerPosition.cs" />
+    <Compile Include="Assets\Scripts\RoundDisplayIndicator.cs" />
     <Compile Include="Assets\Scripts\ShoutController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

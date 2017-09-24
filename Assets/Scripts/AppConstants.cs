@@ -9,6 +9,7 @@ using System.Text;
         public static int numRounds = 5;
         public static int currentRound = 0;
         public static float shoutRefreshTime = 2.0f;
+    public static int[] score;
 
     }
 

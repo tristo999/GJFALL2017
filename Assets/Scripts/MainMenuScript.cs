@@ -14,10 +14,11 @@ public class MainMenuScript : MonoBehaviour {
 
     private int numPlayers;
     private int numRounds;
-
+    private int[] score = { 0, 0, 0, 0 };
     public int[] numPlayerOptions = { 2, 3, 4 };
     public int[] numRoundOptions = { 5, 10, 20 };
 
+   
 
     // Use this for initialization
     void Start()
@@ -41,6 +42,7 @@ public class MainMenuScript : MonoBehaviour {
         AppConstants.numPlayers = numPlayers;
         AppConstants.numRounds = numRounds;
         AppConstants.currentRound = 0;
+        AppConstants.score = score;
 
         SceneManager.LoadScene(1);
     }
