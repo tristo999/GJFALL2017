@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour {
     public string vAxis;
     public string jumpAxis;
     public bool onGround;
+    public GameController gameController;
+    public GameObject winText;
     
     // Use this for initialization
     void Start () {
