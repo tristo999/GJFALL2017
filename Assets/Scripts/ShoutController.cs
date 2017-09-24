@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShoutController : MonoBehaviour {
 
-
+    public AudioClip shoutClip;
     public int numShoutsLeft = 0;
     public AttackManager attackManager;
     public Collider atkcl;
@@ -35,9 +35,7 @@ public class ShoutController : MonoBehaviour {
         {
             Vector3 direction = -transform.forward.normalized;
             atkcl.attachedRigidbody.AddForce(direction.x * shoutMultiplier, (forceUp  * shoutMultiplier /300), direction.z * shoutMultiplier);
-
             attacked = true;
-            
         }
     }
     // Update is called once per frame
@@ -60,6 +58,7 @@ public class ShoutController : MonoBehaviour {
             atkcl.enabled = true;   
             //shoutCone.enabled = true;
             shoutCone.GetComponentInChildren<ParticleSystem>().Emit(100);
+            GetComponentInParent<AudioSource>().PlayOneShot(shoutClip);
             cooldown = initCooldown;
             numShoutsLeft--;
             Vector3 direction = transform.forward.normalized;

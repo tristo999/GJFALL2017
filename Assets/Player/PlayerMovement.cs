@@ -11,8 +11,12 @@ public class PlayerMovement : MonoBehaviour {
     public string vAxis;
     public string jumpAxis;
     public bool onGround;
+
+    public GameObject deadPlayerPrefab;
+
     public GameController gameController;
     public GameObject winText;
+
     
     // Use this for initialization
     void Start () {
@@ -26,6 +30,8 @@ public class PlayerMovement : MonoBehaviour {
         }
         if (groundCollider.tag == "killBox")
         {
+            GameObject deadRobot = Instantiate(deadPlayerPrefab, transform.position, transform.rotation);
+            deadRobot.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
             gameObject.SetActive(false);
         }
     }
@@ -40,8 +46,6 @@ public class PlayerMovement : MonoBehaviour {
     void Update() {
         float hSpeed = Input.GetAxis(hAxis);
         float vSpeed = Input.GetAxis(vAxis);
-        Debug.Log(hSpeed + "," + vSpeed);
-
         float jump = Input.GetAxis(jumpAxis);
         Vector3 dis = new Vector3(hSpeed, 0, vSpeed);
         rb.AddForce(dis.normalized * speed*Time.deltaTime);

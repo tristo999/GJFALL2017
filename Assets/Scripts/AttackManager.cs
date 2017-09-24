@@ -16,6 +16,8 @@ public class AttackManager : MonoBehaviour {
     public float damageMultiplier = 1.0f;
     public float damageDecayPercent = 0f;
 
+    public AudioClip attackClip;
+
 
     // Use this for initialization
     void Start () {
@@ -50,6 +52,7 @@ public class AttackManager : MonoBehaviour {
         {
             atkcl.enabled = true;
             attackParticleSystem.Emit(100);
+            GetComponentInParent<AudioSource>().PlayOneShot(attackClip);
             cooldown = initCooldown;
         }
         if (damageMultiplier > 1)
