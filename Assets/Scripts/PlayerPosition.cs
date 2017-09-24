@@ -8,6 +8,7 @@ public class PlayerPosition : MonoBehaviour {
     private Vector3 positionFinal;
     public float maxDist;
     float minX, maxX, minZ, maxZ;
+    public float maxCamSpeed;
 
     // Use this for initialization
     void Start () {
@@ -41,7 +42,17 @@ public class PlayerPosition : MonoBehaviour {
         }
 
         positionFinal = (positionTotal / players.Length);
-        transform.position = positionFinal;
+        Vector3 diff = positionFinal - transform.position;
+
+        if (diff.magnitude > maxCamSpeed * Time.deltaTime)
+        {
+            transform.position += diff.normalized * maxCamSpeed * Time.deltaTime;
+
+        }
+        else
+        {
+            transform.position = positionFinal;
+        }
 
         float sizeX = maxX - minX;
         float sizeZ = maxZ - minZ;

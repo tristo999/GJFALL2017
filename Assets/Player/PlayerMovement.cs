@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour {
         {
             onGround = true;
         }
+        if (groundCollider.tag == "killBox")
+        {
+            gameObject.SetActive(false);
+        }
     }
     private void OnTriggerExit(Collider groundCollider)
     {
@@ -46,7 +50,6 @@ public class PlayerMovement : MonoBehaviour {
 
         if (onGround)
         {
-            onGround = false;
             rb.AddForce(new Vector3(0, jump, 0) * jumpForce * Time.deltaTime);
         }
     }

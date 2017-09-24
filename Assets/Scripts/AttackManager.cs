@@ -14,6 +14,7 @@ public class AttackManager : MonoBehaviour {
     private float getAtk;
     private bool attacked = false;
     private float damageMultiplier = 1.0f;
+    public float damageDecayPercent = 0f;
 
 
     // Use this for initialization
@@ -29,6 +30,7 @@ public class AttackManager : MonoBehaviour {
             Vector3 direction = transform.forward.normalized;
             atkcl.attachedRigidbody.AddForce(direction.x * baseKnockback*damageMultiplier, forceUp, direction.z * baseKnockback*damageMultiplier);
             attacked = true;
+            damageMultiplier *= 1.5f;
         }
     }
     // Update is called once per frame
@@ -50,7 +52,10 @@ public class AttackManager : MonoBehaviour {
             attackParticleSystem.Emit(100);
             cooldown = initCooldown;
         }
-        
+        if (damageMultiplier > 1)
+            damageMultiplier -= (damageMultiplier * damageDecayPercent * Time.deltaTime);
+        if (damageMultiplier < 1)
+            damageMultiplier = 1;
     }
     public float getDamageMultiplier()
     {

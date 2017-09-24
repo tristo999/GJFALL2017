@@ -77,7 +77,7 @@ public class PlayerHudController : MonoBehaviour {
     {
         if (attackManager != null)
         {
-            damageMultiplier.text = "Damage x "+attackManager.getDamageMultiplier();
+            damageMultiplier.text = "DMG x "+(Mathf.Round(attackManager.getDamageMultiplier()* 10)/ 10.0f);
         }
     }
 
