@@ -1859,7 +1859,6 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
-<<<<<<< HEAD
 --- !u!45 &1322430438
 Skybox:
   m_ObjectHideFlags: 0
@@ -1868,7 +1867,6 @@ Skybox:
   m_GameObject: {fileID: 1322430431}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: 88ec9a13802800449aaf825aff3aadc7, type: 2}
-=======
 --- !u!1 &1362319013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,13 +1912,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> 7c149fa6f3eb403c5c277168f90da8c79d363273
 --- !u!1 &1628024690 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1530261526427568, guid: 7c0b3a73aefbbdb4797d07be217eefa4,
     type: 2}
   m_PrefabInternal: {fileID: 1873398430}
-<<<<<<< HEAD
 --- !u!54 &1628024691 stripped
 Rigidbody:
   m_PrefabParentObject: {fileID: 54059095115088326, guid: 7c0b3a73aefbbdb4797d07be217eefa4,
@@ -1932,7 +1928,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 374573835}
   m_Script: {fileID: 11500000, guid: 56702ea733684734e920edcb751ad534, type: 3}
-=======
 --- !u!1 &1662343591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,7 +2018,6 @@ MonoBehaviour:
   - {fileID: 1745263222}
   - {fileID: 627378086}
   - {fileID: 2053514778}
->>>>>>> 7c149fa6f3eb403c5c277168f90da8c79d363273
 --- !u!1001 &1717312842
 Prefab:
   m_ObjectHideFlags: 0
