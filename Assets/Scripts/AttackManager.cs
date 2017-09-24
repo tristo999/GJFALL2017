@@ -13,7 +13,7 @@ public class AttackManager : MonoBehaviour {
     private float initCooldown;
     private float getAtk;
     private bool attacked = false;
-    private float damageMultiplier = 1.0f;
+    public float damageMultiplier = 1.0f;
     public float damageDecayPercent = 0f;
 
 

@@ -5,40 +5,44 @@ using UnityEngine;
 public class ShoutController : MonoBehaviour {
 
 
-    public int numShoutsLeft = 3;
-    public float shoutMultiplier = 1.0f;
+    public int numShoutsLeft = 0;
+    public AttackManager attackManager;
     public Collider atkcl;
     private MeshRenderer shoutCone;
+    public Rigidbody rb;
     public string attackAxis = "ATK";
     public float forceUp;
     public float cooldown = 2f;
     private float initCooldown = 2f;
     public float getAtk;
     public bool attacked = false;
-
+    public float shoutMultiplier;
     private int maxNumShots;
     private float timeSinceLastShout;
 
     // Use this for initialization
     void Start () {
         atkcl = GetComponentInChildren<MeshCollider>();
-        maxNumShots = numShoutsLeft;
+        maxNumShots = 3;
         timeSinceLastShout = 0.0f;
         initCooldown = cooldown;
         shoutCone = GetComponent<MeshRenderer>();
     }
     void OnTriggerEnter(Collider atkcl)
     {
+        shoutMultiplier = attackManager.damageMultiplier * 300;
         if (atkcl.tag == "Player")
         {
             Vector3 direction = -transform.forward.normalized;
-            atkcl.attachedRigidbody.AddForce(direction.x * shoutMultiplier, forceUp, direction.z * shoutMultiplier);
+            atkcl.attachedRigidbody.AddForce(direction.x * shoutMultiplier, (forceUp  * shoutMultiplier /300), direction.z * shoutMultiplier);
+
             attacked = true;
             
         }
     }
     // Update is called once per frame
     void Update () {
+        shoutMultiplier = attackManager.damageMultiplier * 300;
         if (numShoutsLeft < maxNumShots)
         {
             timeSinceLastShout+= Time.deltaTime;
@@ -58,6 +62,8 @@ public class ShoutController : MonoBehaviour {
             shoutCone.GetComponentInChildren<ParticleSystem>().Emit(100);
             cooldown = initCooldown;
             numShoutsLeft--;
+            Vector3 direction = transform.forward.normalized;
+            rb.AddForce(direction.x * shoutMultiplier * 5, forceUp, direction.z * shoutMultiplier * 5);
         }
 
         if ((atkcl.enabled && cooldown < 0f) || attacked)
