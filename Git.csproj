@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\PlayerPosition.cs" />
     <Compile Include="Assets\Scripts\RoundDisplayIndicator.cs" />
     <Compile Include="Assets\Scripts\ShoutController.cs" />
+    <Compile Include="Assets\ShowScores.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

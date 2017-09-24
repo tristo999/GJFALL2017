@@ -20,7 +20,6 @@ public class MainMenuScript : MonoBehaviour {
 
     private int[] score = { 0, 0, 0, 0 };
     public int[] numPlayerOptions = { 2, 3, 4 };
-
     public int[] numRoundOptions = { 5, 10, 20 };
 
    

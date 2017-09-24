@@ -9,7 +9,7 @@ public class AssignPlayerControls : MonoBehaviour {
     void Start () {
         for (int i = 0; i < players.Length; i++)
         {
-            if (i < AppConstants.numPlayers)
+            if (AppConstants.playerInMatch[i])
             {
                 players[i].GetComponent<PlayerMovement>().hAxis = "Horizontal" + AppConstants.playerControls[i];
                 players[i].GetComponent<PlayerMovement>().vAxis = "Vertical" + AppConstants.playerControls[i];
