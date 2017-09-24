@@ -197,6 +197,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &335720099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 335720102}
+  - component: {fileID: 335720101}
+  - component: {fileID: 335720100}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &335720100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 335720099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &335720101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 335720099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &335720102
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 335720099}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855484732
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1900038755
 Prefab:
@@ -307,7 +369,7 @@ Prefab:
     - target: {fileID: 224134696515995470, guid: 33433c9f056b2a84ab03ebae22b59fcf,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224134696515995470, guid: 33433c9f056b2a84ab03ebae22b59fcf,
         type: 2}
@@ -362,3 +424,42 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33433c9f056b2a84ab03ebae22b59fcf, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1900038756 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1674364989371474, guid: 33433c9f056b2a84ab03ebae22b59fcf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1900038755}
+--- !u!114 &1900038757 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114222837325279702, guid: 33433c9f056b2a84ab03ebae22b59fcf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1900038755}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1900038758 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114391967773169584, guid: 33433c9f056b2a84ab03ebae22b59fcf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1900038755}
+  m_Script: {fileID: 853051423, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1900038759 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114215190654337718, guid: 33433c9f056b2a84ab03ebae22b59fcf,
+    type: 2}
+  m_PrefabInternal: {fileID: 1900038755}
+  m_Script: {fileID: 853051423, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1900038760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1900038756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ba6889c01a3bc48898d38154bf79df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ddNumPlayers: {fileID: 1900038759}
+  ddNumRounds: {fileID: 1900038758}
+  playButton: {fileID: 1900038757}
+  numPlayerOptions: 020000000300000004000000
+  numRoundOptions: 050000000a00000014000000

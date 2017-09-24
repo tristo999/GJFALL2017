@@ -58,12 +58,19 @@ public class PlayerHudController : MonoBehaviour {
             Debug.LogError("Error: no attack manager attached to target player.");
         }
 
+        
+
     }
 	
 	// Update is called once per frame
 	void Update () {
         updateShoutText();
         updateDamageBonus();
+
+        if (!player.activeInHierarchy)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void updateDamageBonus()
