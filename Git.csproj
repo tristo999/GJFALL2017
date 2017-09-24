@@ -85,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\RoundDisplayIndicator.cs" />
     <Compile Include="Assets\Scripts\AdjustZoom.cs" />
     <Compile Include="Assets\Scripts\AppConstants.cs" />
     <Compile Include="Assets\Scripts\AttackManager.cs" />
@@ -93,6 +92,7 @@
     <Compile Include="Assets\Scripts\HudController.cs" />
     <Compile Include="Assets\Scripts\PlayerHudController.cs" />
     <Compile Include="Assets\Scripts\PlayerPosition.cs" />
+    <Compile Include="Assets\Scripts\RoundDisplayIndicator.cs" />
     <Compile Include="Assets\Scripts\ShoutController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
