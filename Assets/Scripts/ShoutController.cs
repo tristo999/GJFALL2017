@@ -55,7 +55,7 @@ public class ShoutController : MonoBehaviour {
         getAtk = Input.GetAxis(attackAxis);
         if (getAtk > 0 && cooldown < 0f &&numShoutsLeft>0)
         {
-            atkcl.enabled = true;
+            atkcl.enabled = true;   
             //shoutCone.enabled = true;
             shoutCone.GetComponentInChildren<ParticleSystem>().Emit(100);
             GetComponentInParent<AudioSource>().PlayOneShot(shoutClip);

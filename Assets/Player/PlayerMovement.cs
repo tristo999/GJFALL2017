@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour {
     public bool onGround;
 
     public GameObject deadPlayerPrefab;
+
+    public GameController gameController;
+    public GameObject winText;
+
     
     // Use this for initialization
     void Start () {
