@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour {
     void Update() {
         float hSpeed = Input.GetAxis(hAxis);
         float vSpeed = Input.GetAxis(vAxis);
+        Debug.Log(hSpeed + "," + vSpeed);
+
         float jump = Input.GetAxis(jumpAxis);
         Vector3 dis = new Vector3(hSpeed, 0, vSpeed);
         rb.AddForce(dis.normalized * speed*Time.deltaTime);

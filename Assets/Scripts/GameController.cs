@@ -13,17 +13,9 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		for(int i = 0; i < players.Length; i++)
         {
-            if (i < AppConstants.numPlayers)
-            {
-                players[i].SetActive(true);
-            }
-            else
-            {
-                players[i].SetActive(false);
-            }
+          players[i].SetActive(AppConstants.playerInMatch[i]);
         }
-        int[] score = { 0, 0, 0, 0 };
-    AppConstants.score = score;
+
 	}
 	
 	// Update is called once per frame

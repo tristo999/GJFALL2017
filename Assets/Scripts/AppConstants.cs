@@ -11,5 +11,9 @@ using System.Text;
         public static float shoutRefreshTime = 2.0f;
     public static int[] score;
 
-    }
+        public static int[] playerControls = new int[] {1,2,3,4};
+        public static bool[] playerInMatch = new bool[] { false, false, false, false };
+
+
+}
 
