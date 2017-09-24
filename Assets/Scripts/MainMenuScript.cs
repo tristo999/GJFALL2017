@@ -12,6 +12,10 @@ public class MainMenuScript : MonoBehaviour {
     public Dropdown ddNumRounds;
     public Button playButton;
 
+    public Dropdown[] playerControls;
+
+    public List<String> playerControlMap;
+
     private int numPlayers;
     private int numRounds;
 
@@ -29,6 +33,14 @@ public class MainMenuScript : MonoBehaviour {
 
     private void startGame()
     {
+        assignControls();
+        assignGameConstants();
+        
+        SceneManager.LoadScene(1);
+    }
+
+    private void assignGameConstants()
+    {
         Text numPlayersText = ddNumPlayers.GetComponentInChildren<Text>();
         Text numRoundsText = ddNumRounds.GetComponentInChildren<Text>();
 
@@ -38,11 +50,25 @@ public class MainMenuScript : MonoBehaviour {
         Debug.Log("numPlayers = " + numPlayers);
         Debug.Log("numRounds = " + numRounds);
 
+
         AppConstants.numPlayers = numPlayers;
         AppConstants.numRounds = numRounds;
         AppConstants.currentRound = 0;
+    }
 
-        SceneManager.LoadScene(1);
+    private void assignControls()
+    {
+        Text player1ControlsText = playerControls[0].GetComponentInChildren<Text>();
+        Text player2ControlsText = playerControls[1].GetComponentInChildren<Text>();
+        Text player3ControlsText = playerControls[2].GetComponentInChildren<Text>();
+        Text player4ControlsText = playerControls[3].GetComponentInChildren<Text>();
+
+        AppConstants.playerControls = new int[]{
+            playerControlMap.IndexOf(player1ControlsText.text),
+            playerControlMap.IndexOf(player2ControlsText.text),
+            playerControlMap.IndexOf(player3ControlsText.text),
+            playerControlMap.IndexOf(player4ControlsText.text)
+        };
     }
 }
 
