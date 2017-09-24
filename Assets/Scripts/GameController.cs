@@ -14,17 +14,9 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		for(int i = 0; i < players.Length; i++)
         {
-            if (i < AppConstants.numPlayers)
-            {
-                players[i].SetActive(true);
-            }
-            else
-            {
-                players[i].SetActive(false);
-            }
+            players[i].SetActive(AppConstants.playerInMatch[i]);
         }
-        int[] score = { 0, 0, 0, 0 };
-    AppConstants.score = score;
+        
 	}
 	
 	// Update is called once per frame
@@ -53,9 +45,45 @@ public class GameController : MonoBehaviour {
             }
             else
             {
+                int highestScore = 0;
+
+                List<int> winners = new List<int>();
+
+                for (int i = 0; i < AppConstants.score.Length; i++)
+                {
+                    if (AppConstants.score[i] > highestScore)
+                    {
+                        highestScore = AppConstants.score[i];
+                    }
+                }
+
+                for (int i = 0; i < AppConstants.score.Length; i++)
+                {
+                    if (AppConstants.score[i] == highestScore)
+                    {
+                        winners.Add(i);
+                    }
+                }
+
+                if (winners.Count <= 1)
+                {
+                    UI.SetActive(false);
+                    EndScreen.SetActive(true);
+                }
+                else
+                {
+                    AppConstants.playerInMatch = new bool[] { false, false, false, false };
+                    for (int i = 0; i < winners.Count; i++)
+                    {
+                        AppConstants.playerInMatch[winners[i]] = true;
+                    }
+                    SceneManager.LoadScene(1);
+                }
+
                 UI.SetActive(false);
                 EndScreen.SetActive(true);
             }
+
         }
-	}
+    }
 }
