@@ -36,8 +36,14 @@ public class MainMenuScript : MonoBehaviour {
     {
         assignControls();
         assignGameConstants();
-        
-        SceneManager.LoadScene(1);
+
+        if (numPlayers >= 2) {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            GameObject.Find("NotEnoughPlayers").GetComponent<Text>().text = "Must Select Atleast 2 Players!";
+        }
     }
 
     private void assignGameConstants()
@@ -80,8 +86,6 @@ public class MainMenuScript : MonoBehaviour {
         AppConstants.currentRound = 0;
         AppConstants.score = score;
     }
-
-        
 
 
     private void assignControls()
