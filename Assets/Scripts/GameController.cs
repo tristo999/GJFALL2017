@@ -90,7 +90,14 @@ public class GameController : MonoBehaviour {
                     EndScreen.SetActive(true);
                     Debug.Log(winners[0]);
                     endGame[winners[0]] = true;
-                    endCool = 5;
+                    if (!roundEnd)
+                    {
+                        endCool = 5;
+                    }
+                    else {
+                        SceneManager.LoadScene(0);
+                    }
+                        roundEnd = true;
                     for (int i = 0; i < endGame.Length; i++)
                     {
                         if (endGame[i])
@@ -111,7 +118,7 @@ public class GameController : MonoBehaviour {
                         }
                     }
                 }
-                else if (EndScreen.activeSelf)
+                else if (EndScreen.activeSelf && endCool < 0)
                 {
                     SceneManager.LoadScene(0);
                 }

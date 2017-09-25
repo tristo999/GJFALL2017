@@ -19,6 +19,7 @@ public class ShoutController : MonoBehaviour {
     public float shoutMultiplier;
     private int maxNumShots;
     private float timeSinceLastShout;
+    public float shouter;
 
     // Use this for initialization
     void Start () {
@@ -30,7 +31,6 @@ public class ShoutController : MonoBehaviour {
     }
     void OnTriggerEnter(Collider atkcl)
     {
-        shoutMultiplier = attackManager.damageMultiplier * 300;
         if (atkcl.tag == "Player")
         {
             Vector3 direction = -transform.forward.normalized;
@@ -40,7 +40,7 @@ public class ShoutController : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        shoutMultiplier = attackManager.damageMultiplier * 300;
+        shoutMultiplier = attackManager.damageMultiplier * shouter;
         if (numShoutsLeft < maxNumShots)
         {
             timeSinceLastShout+= Time.deltaTime;
@@ -62,7 +62,7 @@ public class ShoutController : MonoBehaviour {
             cooldown = initCooldown;
             numShoutsLeft--;
             Vector3 direction = transform.forward.normalized;
-            rb.AddForce(direction.x * shoutMultiplier * 5, forceUp, direction.z * shoutMultiplier * 5);
+            rb.AddForce(direction.x * shoutMultiplier / 2, forceUp, direction.z * shoutMultiplier / 2);
         }
 
         if ((atkcl.enabled && cooldown < 0f) || attacked)
