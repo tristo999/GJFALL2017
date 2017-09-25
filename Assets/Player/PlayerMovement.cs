@@ -8,14 +8,10 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;
     public float jumpForce;
     public string hAxis;
-    public string vAxis;
+    public string vAxis;    
     public string jumpAxis;
     public bool onGround;
-
     public GameObject deadPlayerPrefab;
-
-    public GameController gameController;
-    public GameObject winText;
 
     
     // Use this for initialization
@@ -58,5 +54,6 @@ public class PlayerMovement : MonoBehaviour {
         {
             rb.AddForce(new Vector3(0, jump, 0) * jumpForce * Time.deltaTime);
         }
+        
     }
 }

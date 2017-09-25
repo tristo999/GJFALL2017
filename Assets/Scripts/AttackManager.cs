@@ -12,7 +12,6 @@ public class AttackManager : MonoBehaviour {
     public float cooldown = 0f;
     private float initCooldown;
     private float getAtk;
-    private bool attacked = false;
     public float damageMultiplier = 1.0f;
     public float damageDecayPercent = 0f;
 
@@ -31,7 +30,6 @@ public class AttackManager : MonoBehaviour {
         {
             Vector3 direction = transform.forward.normalized;
             atkcl.attachedRigidbody.AddForce(direction.x * baseKnockback*damageMultiplier, forceUp, direction.z * baseKnockback*damageMultiplier);
-            attacked = true;
             damageMultiplier *= 1.5f;
         }
     }
@@ -45,7 +43,6 @@ public class AttackManager : MonoBehaviour {
         {
             atkcl.enabled = false;
             cooldown = initCooldown;
-            attacked = false;
         }
 
         if (getAtk > 0 && cooldown < 0f)
